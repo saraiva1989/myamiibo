@@ -42,7 +42,7 @@
       :id="item.tail"
       @click="detalhes(item.tail)"
       max-width="400"
-      v-for="item in amiibo"
+      v-for="item in listAmiibo"
       :key="item.tail"
     >
       <div class="mycard__content--back" :class="item.tail">
@@ -54,9 +54,13 @@
           <b>Personagem:</b>
           {{item.character}}
         </v-card-title>
-        <v-card-title>
-          <b>Lançamento:</b>
+        <v-card-title v-if="item.release.eu">
+          <b>Lançamento US:</b>
           {{item.release.eu}}
+        </v-card-title>
+        <v-card-title v-else>
+          <b>Lançamento JP:</b>
+          {{item.release.jp}}
         </v-card-title>
         <v-card-title>
           <b>Tipo:</b>
@@ -80,43 +84,12 @@ export default {
 
   data: () => ({
     front: true,
-    amiibo: [
-      {
-        amiiboSeries: "Super Smash Bros.",
-        character: "Mario",
-        gameSeries: "Super Mario",
-        head: "00000000",
-        image:
-          "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png",
-        name: "Mario",
-        release: {
-          au: "2014-11-29",
-          eu: "2014-11-28",
-          jp: "2014-12-06",
-          na: "2014-11-21"
-        },
-        tail: "00000002",
-        type: "Figure"
-      },
-      {
-        amiiboSeries: "Super Smash Bros.",
-        character: "Peach",
-        gameSeries: "Super Mario",
-        head: "00020000",
-        image:
-          "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00020000-00010002.png",
-        name: "Peach",
-        release: {
-          au: "2014-11-29",
-          eu: "2014-11-28",
-          jp: "2014-12-06",
-          na: "2014-11-21"
-        },
-        tail: "00010002",
-        type: "Figure"
-      }
-    ]
+    amiibo: []
   }),
+    props: ["listAmiibo"],
+
+
+
   methods: {
     detalhes(tail) {
       document.getElementById(tail).classList.toggle("is-flipped");
