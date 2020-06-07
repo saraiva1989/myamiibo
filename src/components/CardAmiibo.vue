@@ -108,7 +108,6 @@ export default {
           "mycard__content--back " + tail
         )[0].style = "display:none";
       }
-      console.log(tail);
     }
   }
 };
