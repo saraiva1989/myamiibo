@@ -1,4 +1,7 @@
 # myamiibo
+Projeto para fazer um teste usando flip no card transform: rotateY(180deg); para dar o efeito de flip
+
+Para fazer o teste basta acessar o link https://saraiva89.com/dev/my-amiibo/
 
 ## Project setup
 ```
